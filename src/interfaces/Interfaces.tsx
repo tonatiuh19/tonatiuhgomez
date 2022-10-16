@@ -7,3 +7,8 @@ export interface Velocity {
   dx: number;
   dy: number;
 }
+
+export interface Button {
+  children?: React.ReactNode;
+  onClick: () => void;
+}

@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import "./Snake.css";
 import useInterval from "../../../Hooks/useInterval/useInterval";
 import { Apple, Velocity } from "../../../interfaces/Interfaces";
-import Timer from "../../Molecules/Timer/Timer";
 import {
   AiTwotoneStar,
   AiOutlineArrowUp,
@@ -107,7 +107,7 @@ const Snake = () => {
   };
 
   const drawSnake = (ctx: CanvasRenderingContext2D) => {
-    ctx.fillStyle = "#0170F3";
+    ctx.fillStyle = "#617691";
     ctx.strokeStyle = "#003779";
 
     fillRect(
@@ -318,7 +318,6 @@ const Snake = () => {
 
   return (
     <>
-      <Timer pause={false} />
       <main>
         <canvas
           ref={canvasRef}
@@ -337,7 +336,7 @@ const Snake = () => {
             </p>
           </div>
           {!isLost && countDown > 0 ? (
-            <button onClick={startGame}>
+            <button className="btn-start" onClick={startGame}>
               {countDown === 4 ? "Start Game" : countDown}
             </button>
           ) : (
@@ -359,17 +358,13 @@ const Snake = () => {
               {newHighscore ? `🎉 New Highscore 🎉` : `You scored: ${score}`}
             </p>
             {!running && isLost && (
-              <button onClick={startGame}>
+              <button className="btn-start" onClick={startGame}>
                 {countDown === 4 ? "Restart Game" : countDown}
               </button>
             )}
           </div>
         )}
       </main>
-      <footer>
-        Copyright &copy; <a href="https://mueller.dev">Marc Müller</a> 2022
-        &nbsp;|&nbsp;{" "}
-      </footer>
     </>
   );
 };

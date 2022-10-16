@@ -1,0 +1,13 @@
+.btn-grey {
+  font-weight: 0;
+  font-size: 3rem;
+  color: #617691;
+  align-items: center;
+  cursor: pointer;
+  padding: 7px;
+  border: none;
+  background: none;
+}
+.btn-grey:hover {
+  color: #000000;
+}

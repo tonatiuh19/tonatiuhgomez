@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useWindowDimensions from "../Hooks/useWindowDimensions/useWindowDimensions";
+import { isMobile } from "react-device-detect";
 
 const Constants = () => {
   const { height, width } = useWindowDimensions();
@@ -7,7 +8,7 @@ const Constants = () => {
   const minGameSpeed = 10;
   const maxGameSpeed = 15;
   const [constants, setConstants] = useState({
-    canvasWidth: width - width * 0.35,
+    canvasWidth: isMobile ? width - width * 0.1 : width - width * 0.2,
     canvasHeight: height - height * 0.35,
     canvasGridSize: canvasGridSize,
     minGameSpeed: minGameSpeed,
@@ -16,7 +17,7 @@ const Constants = () => {
 
   useEffect(() => {
     setConstants({
-      canvasWidth: width - width * 0.35,
+      canvasWidth: isMobile ? width - width * 0.1 : width - width * 0.2,
       canvasHeight: height - height * 0.35,
       canvasGridSize: canvasGridSize,
       minGameSpeed: minGameSpeed,
