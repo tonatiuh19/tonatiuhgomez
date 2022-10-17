@@ -15,31 +15,39 @@ const Footer = () => {
       <div className="btnItem">
         <ButtonGrey
           children={<FaLinkedinIn />}
-          onClick={() => console.log("You clicked on the pink circle!")}
+          onClick={() =>
+            window.open("https://www.linkedin.com/in/tonatiuhgomez/", "_blank")
+          }
         />
       </div>
       <div className="btnItem">
         <ButtonGrey
           children={<FaGithub />}
-          onClick={() => console.log("You clicked on the pink circle!")}
+          onClick={() => window.open("https://github.com/tonatiuh19", "_blank")}
         />
       </div>
       <div className="btnItem">
         <ButtonGrey
           children={<FaFacebookSquare />}
-          onClick={() => console.log("You clicked on the pink circle!")}
+          onClick={() =>
+            window.open("https://www.facebook.com/tonatiuhgbr/", "_blank")
+          }
         />
       </div>
       <div className="btnItem">
         <ButtonGrey
           children={<FaInstagram />}
-          onClick={() => console.log("You clicked on the pink circle!")}
+          onClick={() =>
+            window.open("https://www.instagram.com/tonatiuhgbr/", "_blank")
+          }
         />
       </div>
       <div className="btnItem">
         <ButtonGrey
           children={<FaTwitterSquare />}
-          onClick={() => console.log("You clicked on the pink circle!")}
+          onClick={() =>
+            window.open("https://twitter.com/goomezbriones", "_blank")
+          }
         />
       </div>
     </footer>

@@ -11,6 +11,8 @@ import {
 } from "react-icons/ai";
 import { GrTrophy } from "react-icons/gr";
 import Constants from "../../../utils/Constants";
+import Keyboard from "../../Molecules/Keyboard/Keyboard";
+import { isMobile } from "react-device-detect";
 
 const Snake = () => {
   const {
@@ -41,6 +43,8 @@ const Snake = () => {
     dx: 0,
     dy: 0,
   });
+
+  const [isKeyboard, setIsKeyboard] = useState(false);
 
   const clearCanvas = (ctx: CanvasRenderingContext2D) => {
     ctx.clearRect(-1, -1, canvasWidth + 2, canvasHeight + 2);
@@ -80,6 +84,7 @@ const Snake = () => {
       localStorage.setItem("highscore", score.toString());
       setNewHighscore(true);
     }
+    setIsKeyboard(false);
     setIsLost(true);
     setRunning(false);
     setVelocity({ dx: 0, dy: 0 });
@@ -316,6 +321,25 @@ const Snake = () => {
     };
   }, [previousVelocity]);
 
+  const showKeboyard = () => {
+    if (isMobile) {
+      setIsKeyboard(true);
+      return null;
+    } else {
+      return (
+        <div className="controls">
+          <p>How to Play?</p>
+          <p>
+            <AiOutlineArrowUp />
+            <AiOutlineArrowRight />
+            <AiOutlineArrowDown />
+            <AiOutlineArrowLeft />
+          </p>
+        </div>
+      );
+    }
+  };
+
   return (
     <>
       <main>
@@ -324,33 +348,74 @@ const Snake = () => {
           width={canvasWidth + 1}
           height={canvasHeight + 1}
         />
-        <section>
-          <div className="score">
-            <p>
-              <AiTwotoneStar />
-              Score: {score}
-            </p>
-            <p>
-              <GrTrophy />
-              Highscore: {highscore > score ? highscore : score}
-            </p>
+
+        {isKeyboard ? (
+          <div className="keyboard">
+            <Keyboard
+              onClickUp={() => {
+                if (
+                  !(
+                    previousVelocity.dx + velocity.dx === 0 &&
+                    previousVelocity.dy + velocity.dy === 0
+                  )
+                ) {
+                  setVelocity({ dx: 0, dy: -1 });
+                }
+              }}
+              onClickLeft={() => {
+                if (
+                  !(
+                    previousVelocity.dx + velocity.dx === 0 &&
+                    previousVelocity.dy + velocity.dy === 0
+                  )
+                ) {
+                  setVelocity({ dx: -1, dy: 0 });
+                }
+              }}
+              onClickDown={() => {
+                if (
+                  !(
+                    previousVelocity.dx + velocity.dx === 0 &&
+                    previousVelocity.dy + velocity.dy === 0
+                  )
+                ) {
+                  setVelocity({ dx: 0, dy: 1 });
+                }
+              }}
+              onClickRight={() => {
+                if (
+                  !(
+                    previousVelocity.dx + velocity.dx === 0 &&
+                    previousVelocity.dy + velocity.dy === 0
+                  )
+                ) {
+                  setVelocity({ dx: 1, dy: 0 });
+                }
+              }}
+            />
           </div>
-          {!isLost && countDown > 0 ? (
-            <button className="btn-start" onClick={startGame}>
-              {countDown === 4 ? "Start Game" : countDown}
-            </button>
-          ) : (
-            <div className="controls">
-              <p>How to Play?</p>
+        ) : (
+          <section>
+            <div className="score">
               <p>
-                <AiOutlineArrowUp />
-                <AiOutlineArrowRight />
-                <AiOutlineArrowDown />
-                <AiOutlineArrowLeft />
+                <AiTwotoneStar />
+                Score: {score}
+              </p>
+              <p>
+                <GrTrophy />
+                Highscore: {highscore > score ? highscore : score}
               </p>
             </div>
-          )}
-        </section>
+            {!isLost && countDown > 0 ? (
+              <button className="btn-start" onClick={startGame}>
+                {countDown === 4 ? "Start Game" : countDown}
+              </button>
+            ) : (
+              showKeboyard()
+            )}
+          </section>
+        )}
+
         {isLost && (
           <div className="game-overlay">
             <p className="large">Game Over</p>

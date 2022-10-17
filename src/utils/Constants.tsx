@@ -18,7 +18,7 @@ const Constants = () => {
   useEffect(() => {
     setConstants({
       canvasWidth: isMobile ? width - width * 0.1 : width - width * 0.2,
-      canvasHeight: height - height * 0.35,
+      canvasHeight: isMobile ? height - height * 0.45 : height - height * 0.35,
       canvasGridSize: canvasGridSize,
       minGameSpeed: minGameSpeed,
       maxGameSpeed: maxGameSpeed,

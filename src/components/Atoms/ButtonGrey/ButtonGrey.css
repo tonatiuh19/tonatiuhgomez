@@ -11,3 +11,16 @@
 .btn-grey:hover {
   color: #000000;
 }
+
+@media (max-width: 645px) {
+  .btn-grey {
+    font-weight: 0;
+    font-size: 1.5rem;
+    color: #617691;
+    align-items: center;
+    cursor: pointer;
+    padding: 7px;
+    border: none;
+    background: none;
+  }
+}

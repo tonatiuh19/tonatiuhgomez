@@ -18,6 +18,13 @@ section {
   align-items: center;
   box-sizing: border-box;
 }
+
+.keyboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 section p {
   padding: 0;
   margin: 0;
