@@ -1,0 +1,47 @@
+.footerButton {
+  font-size: 2rem;
+  color: #617691;
+}
+
+.footerContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: normal;
+  align-content: normal;
+
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 10px;
+  opacity: 0.6;
+  text-align: center;
+}
+
+.btnItem {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+
+@media (max-width: 645px) {
+  .footerContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: normal;
+    align-content: normal;
+
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 2px;
+    opacity: 0.6;
+    text-align: center;
+  }
+}
